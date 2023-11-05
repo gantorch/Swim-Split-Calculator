@@ -1,0 +1,9 @@
+Thomas Ceccon (25.14, 26.46) 51.60
+Ryan Murphy (25.13, 26.72) 51.85
+Jaiyu Xu (24.99, 26.87) 51.86
+Aaron Peirsol (25.35, 26.59) 51.94
+Evgeny Rylov (24.96, 27.02) 51.98
+Kliment Kolesnikov (24.90, 27.10) 52.00
+Matt Grevers (25.37, 26.71) 52.08
+Mitchell Larkin (25.24, 26.87) 52.11
+Camille Lacourt (25.43, 26.68) 52.11

@@ -1,0 +1,79 @@
+{% extends "base.html.j2" %}
+
+{% block body %}
+    <script src="static/validationlcm.js"></script>
+    <div class="topnav">
+        <h1>Swim Split Calculator - Meters</h1>    
+    </div>
+    <form action="/" method="get">
+        <button class="btn">←</button>
+    </form>
+    <form id="entry" action="/calcmeters" method="GET">
+        <div class="entry">
+            <div class="input">
+                <input class="time" type="number" name="mm" min="0" placeholder="MM" max="59"> :
+                <input class="time" type="number" name="ss" min="0" placeholder="SS" max="59"> .
+                <input class="time" type="number" name="ms" min="0" placeholder="HH"max="99">
+            </div>
+            <div class="dropdown">
+                <div class="dropdownchild">
+                    <select id="stroke" name="stroke" onchange="selectdist()" class="required" required>
+                        <option value="">Stroke</option>
+                        <option value="fly">Butterfly</option>
+                        <option value="back">Backstroke</option>
+                        <option value="breast">Breaststroke</option>
+                        <option value="free">Freestyle</option>
+                        <option value="im">Individual Medley</option>
+                    </select>
+                </div>
+                <div class="dropdownchild">
+                    <select id="gender" name="gender" class="required" onchange="enableSubmit()" required>
+                        <option value="">Gender</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="radio-toolbar" class="required" onchange="enableSubmit()">
+                <input type="radio" id="100" name="distance" value="100">
+                <label id="100l" for="100">100m</label>
+
+                <input type="radio" id="200" name="distance" value="200">
+                <label id="200l" for="200">200m</label>
+
+                <input type="radio" id="400" name="distance" value="400">
+                <label id="400l" for="400">400m</label>
+
+                <input type="radio" id="800" name="distance" value="800">
+                <label id="800l" for="800">800m</label>
+
+                <input type="radio" id="1500" name="distance" value="1500">
+                <label id="1500l" for="1500">1500m</label>
+            </div>
+            <button id="calculate" type="submit" form="entry" value="Submit" onClick="validatefilledIn()" disabled>Calculate</button>
+        </div>
+    </form>    
+    <div>
+        {% if empty != true %}
+            <table class="results">
+                <tr>
+                    <th>Split</th>
+                    <th>Ideal Time</th>
+                </tr>
+                {% for i in iterator %}
+                    <tr>
+                        <td>{{distdisplay[i]}}</td>
+                        <td>{{results[i]}}</td>
+                    </tr>
+                {% endfor %} 
+                <tr>
+                    <td style="font-weight: bold;">Total</td>
+                    <td style="font-weight: bold;">{{timedisplay}}</td>
+                </tr>
+            </table>
+        {% endif %}
+    </div>
+
+{% endblock %}
+

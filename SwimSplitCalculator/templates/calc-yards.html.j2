@@ -1,0 +1,60 @@
+{% extends "base.html.j2" %}
+
+{% block body %}
+    <script src="static/validationscy.js"></script>
+    <div class="topnav">
+        <h1>Swim Split Calculator - Yards</h1>    
+    </div>
+    <form action="/" method="get">
+        <button class="btn">←</button>
+    </form>
+    <form id="entry" action="/calcmeters" method="GET">
+        <div class="entry">
+            <div class="input">
+                <input class="time" type="number" name="mm" min="0" placeholder="MM" max="59"> :
+                <input class="time" type="number" name="ss" min="0" placeholder="SS" max="59"> .
+                <input class="time" type="number" name="ms" min="0" placeholder="HH"max="99">
+            </div>
+            <div class="dropdown">
+                <div class="dropdownchild">
+                    <select id="stroke" name="stroke" onchange="selectdist()" class="required" required>
+                        <option value="">Stroke</option>
+                        <option value="fly">Butterfly</option>
+                        <option value="back">Backstroke</option>
+                        <option value="breast">Breaststroke</option>
+                        <option value="free">Freestyle</option>
+                        <option value="im">Individual Medley</option>
+                    </select>
+                </div>
+                <div class="dropdownchild">
+                    <select id="gender" name="gender" class="required" onchange="enableSubmit()" required>
+                        <option value="">Gender</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="radio-toolbar" class="required" onchange="enableSubmit()">
+                <input type="radio" id="100" name="distance" value="100">
+                <label id="100l" for="100">100y</label>
+
+                <input type="radio" id="200" name="distance" value="200">
+                <label id="200l" for="200">200y</label>
+
+                <input type="radio" id="400" name="distance" value="400">
+                <label id="400l" for="400">400y</label>
+
+                <input type="radio" id="500" name="distance" value="500">
+                <label id="500l" for="500">500y</label>
+
+                <input type="radio" id="1000" name="distance" value="1000">
+                <label id="1000l" for="1000">1000y</label>
+
+                <input type="radio" id="1650" name="distance" value="1650">
+                <label id="1650l" for="1650">1650y</label>
+            </div>
+            <button id="calculate" type="submit" form="entry" value="Submit" onClick="validatefilledIn()" disabled>Calculate</button>
+        </div>
+    </form>
+{% endblock %}
